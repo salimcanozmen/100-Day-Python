@@ -17,13 +17,15 @@ while game_on:
     answer = screen.textinput(title=f"{len(correctly_answered)}/50 Guess the State", prompt="Guess a states name")
     answer = answer.title()
     if answer == "Exit":
-        list_of_states_to_learn = []
+        # list_of_states_to_learn = []
+        list_of_states_to_learn = [to_learn for to_learn in state_list if to_learn not in correctly_answered]
         states_to_learn = {
             "States to Learn": list_of_states_to_learn
         }
-        for to_learn in state_list:
-            if to_learn not in correctly_answered:
-                list_of_states_to_learn.append(to_learn)
+        ## Old version of code before learning list comprehension.
+        # for to_learn in state_list:
+        #     if to_learn not in correctly_answered:
+        #         list_of_states_to_learn.append(to_learn)
         df = pandas.DataFrame(states_to_learn)
         df.to_csv("States to Learn.csv")
         break
