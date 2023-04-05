@@ -12,7 +12,7 @@ def radio_used():
     #Function for Mile to Km
         def calculate():
             mile = input.get()
-            kilometer = round(int(mile) * 1.609344, 2)
+            kilometer = round(float(mile) * 1.609344, 2)
             answer.config(text=kilometer)
         
 #Labels for Km to Mile 
@@ -23,7 +23,7 @@ def radio_used():
     #Function for Km to Mile
         def calculate():
             kilometer = input.get()
-            mile = round(int(kilometer) / 1.609344, 2)
+            mile = round(float(kilometer) / 1.609344, 2)
             answer.config(text=mile)
     calculate_button = Button(text="Calculate", command=calculate)
     calculate_button.grid(row=3, column=1)

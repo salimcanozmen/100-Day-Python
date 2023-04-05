@@ -35,7 +35,7 @@ input.grid(row=1, column=1)
 #Button
 def calculate():
         mile = input.get()
-        kilometer = round(int(mile) * 1.609344, 2)
+        kilometer = round(float(mile) * 1.609344, 2)
         answer.config(text=kilometer)
 
 
