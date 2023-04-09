@@ -5,7 +5,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
+WORK_MIN = 0.1
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 REPS = 0
@@ -20,6 +20,13 @@ def reset_timer():
     check_mark.config(text="")
     REPS = 0
     
+# ---------------------------- POP-UP------------------------------- # 
+def open_popup():
+    top= Toplevel(window)
+    top.geometry("250x150")
+    top.title("Pomodoro Alert")
+    Label(top, text= "Time is up!", font=('Mistral 18 bold')).place(x=50,y=40)
+
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
     global REPS
@@ -39,7 +46,7 @@ def start_timer():
     else:
         count_down(work_sec)
         timer_label.config(text="Work", fg=GREEN)
-    
+
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
     global REPS
@@ -53,6 +60,7 @@ def count_down(count):
         global timer
         timer = window.after(1000, count_down, count - 1)
     else:
+        open_popup()
         start_timer()
         check_number = REPS // 2
         output = ""
